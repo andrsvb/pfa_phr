@@ -64,6 +64,7 @@ t_upeador : up_pos port map(
     wait for 100 ns;
   --Dos
     posicion_in<= 2;
+    wait for 100 ns;
  end process;
 
 end Behavioral;
