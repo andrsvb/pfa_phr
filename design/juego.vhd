@@ -55,73 +55,73 @@ COMPONENT controlador_velocidad
 	);
 END COMPONENT;
 
---COMPONENT controlador_posicion
---    port(
---      tick : in std_logic;
---      s_reset : in std_logic;
---      up : in std_logic;
---      down : in std_logic;
---      posicion : out integer range 0 to 2;
---      leds : out std_logic_vector (7 downto 0)
---	);
---END COMPONENT;
+COMPONENT controlador_posicion
+    port(
+      tick : in std_logic;
+      s_reset : in std_logic;
+      up : in std_logic;
+      down : in std_logic;
+      posicion : out integer range 0 to 2;
+      leds : out std_logic_vector (7 downto 0)
+	);
+END COMPONENT;
 
---COMPONENT controlador_obstaculos 
---    port(
---      tick : in std_logic;
---      s_reset : in std_logic;
---      leds_obs0 : out std_logic_vector (7 downto 0);
---      leds_obs1 : out std_logic_vector (7 downto 0);
---      leds_obs2 : out std_logic_vector (7 downto 0);
---      obstaculo3 : out integer range 0 to 5
---	);
---END COMPONENT;
+COMPONENT controlador_obstaculos 
+    port(
+      tick : in std_logic;
+      s_reset : in std_logic;
+      leds_obs0 : out std_logic_vector (7 downto 0);
+      leds_obs1 : out std_logic_vector (7 downto 0);
+      leds_obs2 : out std_logic_vector (7 downto 0);
+      obstaculo3 : out integer range 0 to 5
+	);
+END COMPONENT;
 
---COMPONENT controlador_colision 
---    port(
---      tick : in std_logic;
---      posicion : in integer range 0 to 2;
---      obstaculo3 : in integer range 0 to 5;
---      colision : out std_logic
---	);
---END COMPONENT;
+COMPONENT controlador_colision 
+    port(
+      tick : in std_logic;
+      posicion : in integer range 0 to 2;
+      obstaculo3 : in integer range 0 to 5;
+      colision : out std_logic
+	);
+END COMPONENT;
 
---COMPONENT controlador_vidas 
---    port(
---      tick : in std_logic;
---      colision : in std_logic;
---      s_reset : in std_logic;
---      game_over : out std_logic;
---      leds_vidas : out std_logic_vector (7 downto 0)
---	);
---END COMPONENT;
+COMPONENT controlador_vidas 
+    port(
+      tick : in std_logic;
+      colision : in std_logic;
+      s_reset : in std_logic;
+      game_over : out std_logic;
+      leds_vidas : out std_logic_vector (7 downto 0)
+	);
+END COMPONENT;
 
---COMPONENT controlador_puntuacion 
---    port(
---      tick : in std_logic;
---      s_reset : in std_logic;
---      leds_p0 : out std_logic_vector (7 downto 0);
---      leds_p1 : out std_logic_vector (7 downto 0);
---      leds_p2 : out std_logic_vector (7 downto 0);
---      puntuacion : out integer range 0 to 999
---	);
---END COMPONENT;
+COMPONENT controlador_puntuacion 
+    port(
+      tick : in std_logic;
+      s_reset : in std_logic;
+      leds_p0 : out std_logic_vector (7 downto 0);
+      leds_p1 : out std_logic_vector (7 downto 0);
+      leds_p2 : out std_logic_vector (7 downto 0);
+      puntuacion : out std_logic_vector (9 downto 0)
+	);
+END COMPONENT;
 
---COMPONENT controlador_displays
---    port(
---        clk : in std_logic;
---        leds_personaje : out std_logic_vector (7 downto 0);
---        leds_obs2 : out std_logic_vector (7 downto 0);
---        leds_obs1 : out std_logic_vector (7 downto 0);
---        leds_obs0 : out std_logic_vector (7 downto 0);
---        leds_vidas : out std_logic_vector (7 downto 0);
---        leds_p2 : out std_logic_vector (7 downto 0);
---        leds_p1 : out std_logic_vector (7 downto 0);
---        leds_p0 : out std_logic_vector (7 downto 0);
---        displays_anodes : out std_logic_vector (7 downto 0);
---        displays_cathodes : out std_logic_vector (7 downto 0)
---	);
---END COMPONENT;
+COMPONENT controlador_displays
+    port(
+        clk : in std_logic;
+        leds_personaje : in std_logic_vector (7 downto 0);
+        leds_obs2 : in std_logic_vector (7 downto 0);
+        leds_obs1 : in std_logic_vector (7 downto 0);
+        leds_obs0 : in std_logic_vector (7 downto 0);
+        leds_vidas : in std_logic_vector (7 downto 0);
+        leds_p2 : in std_logic_vector (7 downto 0);
+        leds_p1 : in std_logic_vector (7 downto 0);
+        leds_p0 : in std_logic_vector (7 downto 0);
+        displays_anodes : out std_logic_vector (7 downto 0);
+        displays_cathodes : out std_logic_vector (7 downto 0)
+	);
+END COMPONENT;
 
 COMPONENT controlador_pausa 
   port(
@@ -146,22 +146,14 @@ signal game_over : std_logic;
 signal signal_reset : std_logic;
 signal speed : std_logic;
 signal s_clk : std_logic;
-signal leds_personaje_in : std_logic_vector (7 downto 0);
-signal leds_obs2_in : std_logic_vector (7 downto 0);
-signal leds_obs1_in : std_logic_vector (7 downto 0);
-signal leds_obs0_in : std_logic_vector (7 downto 0);
-signal leds_vidas_in :  std_logic_vector (7 downto 0);
-signal leds_p2_in : std_logic_vector (7 downto 0);
-signal leds_p1_in : std_logic_vector (7 downto 0);
-signal leds_p0_in : std_logic_vector (7 downto 0);
-signal leds_personaje_out : std_logic_vector (7 downto 0);
-signal leds_obs2_out : std_logic_vector (7 downto 0);
-signal leds_obs1_out : std_logic_vector (7 downto 0);
-signal leds_obs0_out : std_logic_vector (7 downto 0);
-signal leds_vidas_out :  std_logic_vector (7 downto 0);
-signal leds_p2_out : std_logic_vector (7 downto 0);
-signal leds_p1_out : std_logic_vector (7 downto 0);
-signal leds_p0_out : std_logic_vector (7 downto 0);
+signal leds_personaje : std_logic_vector (7 downto 0);
+signal leds_obs2 : std_logic_vector (7 downto 0);
+signal leds_obs1 : std_logic_vector (7 downto 0);
+signal leds_obs0 : std_logic_vector (7 downto 0);
+signal leds_vidas :  std_logic_vector (7 downto 0);
+signal leds_p2 : std_logic_vector (7 downto 0);
+signal leds_p1 : std_logic_vector (7 downto 0);
+signal leds_p0 : std_logic_vector (7 downto 0);
 
 begin
 
@@ -172,27 +164,27 @@ c_ve : controlador_velocidad
       tick => tick
 	);
 
-c_po : entity work.controlador_posicion
+c_po : controlador_posicion
     port map(
       tick => tick,
       s_reset => signal_reset,
       up => up,
       down => down,
       posicion => posicion,
-      leds => leds_personaje_in
+      leds => leds_personaje
 	);
 
-c_o : entity work.controlador_obstaculos 
+c_o : controlador_obstaculos 
     port map(
       tick => tick,
       s_reset  => signal_reset,
-      leds_obs0  => leds_obs0_in,
-      leds_obs1  => leds_obs1_in,
-      leds_obs2  => leds_obs2_in,
+      leds_obs0  => leds_obs0,
+      leds_obs1  => leds_obs1,
+      leds_obs2  => leds_obs2,
       obstaculo3  => obstaculo3
 	);
 
-c_c : entity work.controlador_colision 
+c_c : controlador_colision 
     port map(
       tick => tick,
       posicion => posicion,
@@ -200,36 +192,36 @@ c_c : entity work.controlador_colision
       colision => colision
 	);
 
-c_vi : entity work.controlador_vidas 
+c_vi : controlador_vidas 
     port map(
       tick => tick,
       colision => colision,
       s_reset => signal_reset,
       game_over => game_over,
-      leds_vidas => leds_vidas_in
+      leds_vidas => leds_vidas
 	);
 
-c_pu : entity work.controlador_puntuacion 
+c_pu : controlador_puntuacion 
     port map(
       tick => tick,
       s_reset => signal_reset,
-      leds_p0 => leds_p0_in,
-      leds_p1 => leds_p1_in,
-      leds_p2 => leds_p2_in,
+      leds_p0 => leds_p0,
+      leds_p1 => leds_p1,
+      leds_p2 => leds_p2,
       puntuacion => puntuacion
 	);
 	
-c_d : entity work.controlador_displays
+c_d : controlador_displays
     port map(
         clk => clk,
-        leds_personaje => leds_personaje_out,
-        leds_obs2 => leds_obs2_out,
-        leds_obs1 => leds_obs1_out,
-        leds_obs0 => leds_obs0_out,
-        leds_vidas => leds_vidas_out,
-        leds_p2 => leds_p2_out,
-        leds_p1 => leds_p1_out,
-        leds_p0 => leds_p0_out,
+        leds_personaje => leds_personaje,
+        leds_obs2 => leds_obs2,
+        leds_obs1 => leds_obs1,
+        leds_obs0 => leds_obs0,
+        leds_vidas => leds_vidas,
+        leds_p2 => leds_p2,
+        leds_p1 => leds_p1,
+        leds_p0 => leds_p0,
         displays_anodes => displays_anodes,
         displays_cathodes => displays_cathodes
 	);
@@ -248,16 +240,5 @@ e_ve : estado_velocidad
   );
   
 signal_reset <= reset OR game_over;
-
-
--- leds_personaje_out <= leds_personaje_in;
--- leds_obs2_out <= leds_obs2_in;
--- leds_obs1_out <= leds_obs1_in;
--- leds_obs0_out <= leds_obs0_in;
--- leds_vidas_out <= leds_vidas_in;
--- leds_p2_out <= leds_p2_in;
--- leds_p1_out <= leds_p1_in;
--- leds_p0_out <= leds_p0_in;
-
 
 end Behavioral;

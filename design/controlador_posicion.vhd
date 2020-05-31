@@ -97,20 +97,21 @@ posicion_zero <= 0;
 registro_posicion : registro_p port map(
       tick_r => tick,
       new_pos => new_posi,
-      pos_r => posicion
+      pos_r => s_posi
 );
-
-down_r <= up OR s_reset;
-up_r <= up OR s_reset;
 
 upeador_pos : up_pos port map(
     posicion_u => s_posi,
     u_posicion => posicion_upeada
 );
+
 downeador_pos : down_pos port map(
     posicion_d => s_posi,
     d_posicion => posicion_downeada
 );
+
+down_r <= down OR s_reset;
+up_r <= up OR s_reset;
 
 mux : mux_41 port map(
     S0 => down_r,
@@ -126,7 +127,7 @@ decoder_0 : decoder_posicion port map(
     posicion_d => s_posi,
     leds => leds
 );
-	
+
 posicion <= s_posi;
 
 end Behavioral;

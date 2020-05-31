@@ -92,12 +92,12 @@ tick1 <= '1' when (p0 = 10) else '0';
 contador1 : contador_puntuacion port map(
       tick => tick1,
       s_reset => s_reset,
-      puntuacion => p0
+      puntuacion => p1
 	);
 
 decoder1 : decoder_puntuacion port map(
-      puntuacion => p0,
-      leds => leds_p0
+      puntuacion => p1,
+      leds => leds_p1
 	);
 
 tick2 <= '1' when (p1 = 10) else '0';
@@ -105,12 +105,12 @@ tick2 <= '1' when (p1 = 10) else '0';
 contador2 : contador_puntuacion port map(
       tick => tick2,
       s_reset => s_reset,
-      puntuacion => p0
+      puntuacion => p2
 	);
 
 decoder2 : decoder_puntuacion port map(
-      puntuacion => p0,
-      leds => leds_p0
+      puntuacion => p2,
+      leds => leds_p2
 	);
 
 salida_p : salida_puntuacion port map(

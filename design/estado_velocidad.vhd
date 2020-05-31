@@ -51,5 +51,6 @@ process (boton_speed)
        end if;
 end process;
 
+speed <= s_speed;
 
 end Behavioral;

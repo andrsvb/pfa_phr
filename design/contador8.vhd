@@ -55,4 +55,6 @@ process (clk)
        end if;
 end process;
 
+selector <= conta;
+
 end Behavioral;

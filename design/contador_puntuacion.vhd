@@ -50,12 +50,14 @@ process (tick, s_reset)
        if s_reset = '1' then
             conta <= 0; 
        elsif tick = '1' and tick'event then
-         if conta = 0 OR conta = 10 then
+         if conta = 10 then
             conta <= 1;
          else
             conta <= conta + 1;
          end if;
        end if;
 end process;
+
+puntuacion <= conta;
 
 end Behavioral;

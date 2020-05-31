@@ -51,4 +51,6 @@ process (boton_pausa)
        end if;
 end process;
 
+pausa <= s_pausa;
+
 end Behavioral;
