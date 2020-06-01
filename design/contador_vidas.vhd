@@ -43,7 +43,7 @@ end contador_vidas;
 
 architecture Behavioral of contador_vidas is
 
-signal s_vidas : integer range 0 to 3;
+signal s_vidas : integer range 0 to 3 := 3;
 
 begin
 
