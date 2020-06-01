@@ -92,7 +92,7 @@ begin
 	wait for 100 ns;
 	--meter el obstaculo 5 en el registro
 	tick <='0';
-	new_obs <=4;
+	new_obs <=5;
     wait for 100 ns;
 	tick <='1';
 	wait for 100 ns;

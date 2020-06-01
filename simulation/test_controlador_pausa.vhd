@@ -63,6 +63,7 @@ c_pau : controlador_pausa
     
     --el reloj deberia actualizarse segun el clock
     --ciclo de reloj
+    boton_pausa_in <= '0';
     clock_in <= '0';
     wait for 100 ns;
     clock_in <= '1';
@@ -74,10 +75,9 @@ c_pau : controlador_pausa
     wait for 100 ns;
     
     --pulso boton: no pausa a pausa
-    boton_pausa_in <= '0';
-    wait for 100 ns;
     boton_pausa_in <= '1';
     wait for 100 ns;
+    boton_pausa_in <= '0';
     
     --el reloj no deberia pasar a 1 en estado pausa
     --ciclo de reloj
@@ -92,10 +92,9 @@ c_pau : controlador_pausa
     wait for 100 ns;
         
     --pulso boton: pausa a no pausa
-    boton_pausa_in <= '0';
-    wait for 100 ns;
     boton_pausa_in <= '1';
     wait for 100 ns;
+    boton_pausa_in <= '0';
     
     --el reloj deberia actualizarse segun el clock
     --ciclo de reloj

@@ -52,11 +52,12 @@ signal led_out : std_logic_vector (7 downto 0);
 signal tick_c_in: std_logic;
 
 begin
+
 t_controlador_led : controlador_led port map(
-obs_prev => obs_prev_in,
-obs_sig => obs_sig_out,
-led => led_out,
-tick_c=> tick_c_in
+    obs_prev => obs_prev_in,
+    obs_sig => obs_sig_out,
+    led => led_out,
+    tick_c=> tick_c_in
 );
 t_controlador: process
 begin

@@ -41,16 +41,16 @@ component controlador_vidas is
  port ( 
   colision : in std_logic;
   tick : in std_logic;
-  s_reset : out std_logic;
-  leds_vidas : out std_logic_vector (7 downto 0);
-  reset_button: in std_logic
+  s_reset: in std_logic;
+  game_over : out std_logic;
+  leds_vidas : out std_logic_vector (7 downto 0)
   );
 end component;
 
 signal colision_in : std_logic;
 signal tick_in : std_logic;
-signal s_reset_out : std_logic;
-signal reset_button_in : std_logic;
+signal s_reset_in : std_logic;
+signal game_over_out : std_logic;
 signal leds_vidas_out : std_logic_vector (7 downto 0);
 
 
@@ -59,9 +59,9 @@ begin
 t_controlador : controlador_vidas port map(
   colision => colision_in,
   tick => tick_in,
-  s_reset => s_reset_out,
+  s_reset => s_reset_in,
   leds_vidas => leds_vidas_out,
-  reset_button => reset_button_in
+  game_over => game_over_out
 );
  
  t_process : process
@@ -69,33 +69,33 @@ t_controlador : controlador_vidas port map(
  begin
  
     --Bajada de vidas (de 3 a 0)
-	reset_button_in <= '0';
+	s_reset_in <= '0';
 	colision_in <= '0';
     tick_in <= '0';
     wait for 100 ns;
-	reset_button_in <= '0';
+	s_reset_in <= '0';
     colision_in <= '1'; -- Primera colision (2 vidas)
     tick_in <= '1';
     wait for 100 ns;
-	reset_button_in <= '0';
+	s_reset_in <= '0';
     colision_in <= '1'; -- Segunda colision (1 vida)
 	tick_in <= '0';
 	wait for 100 ns;
-	reset_button_in <= '0';
+	s_reset_in <= '0';
 	colision_in <= '1'; -- Tercera colision (0 vidas)
 	tick_in <= '1';  
 	wait for 100 ns;
 	
     -- Se pulsa el botón reset 
-    reset_button_in <= '0';
+    s_reset_in <= '0';
 	colision_in <= '0';
     tick_in <= '0';
     wait for 100 ns;
-	reset_button_in <= '0';
+	s_reset_in <= '0';
 	colision_in <= '1'; -- Primera colision (2 vidas)
     tick_in <= '1';
     wait for 100 ns;
-	reset_button_in <= '1'; --Botón reset = 1;
+	s_reset_in <= '1'; --Botón reset = 1;
 	colision_in <= '0'; 
     tick_in <= '0';
     wait for 100 ns;

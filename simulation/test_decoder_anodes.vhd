@@ -79,10 +79,10 @@ t_decoder_a : decoder_anodes port map(
     selector_in <= 5;
     wait for 100 ns;
   --enciende el septimo led: '11111101'
-    selector_in <= 4;
+    selector_in <= 6;
     wait for 100 ns;
   --enciende el octavo led: '11111110'
-    selector_in <= 5;
+    selector_in <= 7;
     wait for 100 ns;
     
  end process;

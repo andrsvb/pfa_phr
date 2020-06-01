@@ -61,7 +61,8 @@ t_mux : mux_41 port map(
     C => C_in,
     D => D_in,
     S0 => S0_in,
-    S1 => S1_in
+    S1 => S1_in,
+    Z => Z_out
  );
  
  t_process : process

@@ -44,7 +44,7 @@ component controlador_puntuacion is
   leds_p0 : out std_logic_vector (7 downto 0);
   leds_p1 : out std_logic_vector (7 downto 0);
   leds_p2 : out std_logic_vector (7 downto 0);
-  puntuacion : out integer range 0 to 999
+  puntuacion : out std_logic_vector (9 downto 0)
   );
 end component;
 
@@ -53,7 +53,7 @@ signal s_reset_in : std_logic;
 signal leds_p0_out : std_logic_vector (7 downto 0);
 signal leds_p1_out : std_logic_vector (7 downto 0);
 signal leds_p2_out : std_logic_vector (7 downto 0);
-signal puntuacion_out : integer range 0 to 999;
+signal puntuacion_out : std_logic_vector (9 downto 0);
 
 begin
 

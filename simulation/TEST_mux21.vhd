@@ -12,7 +12,7 @@ port (
  a : in std_logic;
  b : in std_logic;
  speed : in std_logic;
- tick : out std_logic
+ salida : out std_logic
  );
 end component;
 
@@ -26,7 +26,8 @@ begin
 t_mux21 : mux2_1 port map(
 a=> a_in,
 b=> b_in,
-speed=> speed_in
+speed=> speed_in,
+salida => tick_out
 );
 
 t_process : process

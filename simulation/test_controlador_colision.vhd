@@ -41,7 +41,7 @@ component controlador_colision is
  port ( 
   posicion : in integer range 0 to 2;
   tick : in std_logic;
-  obs_3 : in integer range 0 to 5;
+  obstaculo3 : in integer range 0 to 5;
   colision: out std_logic
   );
 end component;
@@ -57,7 +57,7 @@ begin
 t_controlador : controlador_colision port map(
   posicion => posicion_in,
   tick => tick_in,
-  obs_3 => obs_3_in,
+  obstaculo3 => obs_3_in,
   colision => colision_out
 );
  
@@ -97,7 +97,7 @@ t_controlador : controlador_colision port map(
 	--Jugador arriba y obstaculo cuadrado arriba
     posicion_in <= 2;
 	obs_3_in <= 5;
-    tick_in <= '1';
+    tick_in <= '0';
     wait for 100 ns;
     tick_in <= '1';
     wait for 100 ns;
@@ -114,7 +114,7 @@ t_controlador : controlador_colision port map(
 	--Jugador en medio y obstaculo abajo
     posicion_in <= 1;
 	obs_3_in <= 1;
-    tick_in <= '1';
+    tick_in <= '0';
     wait for 100 ns;
     tick_in <= '1';
     wait for 100 ns;
@@ -128,7 +128,7 @@ t_controlador : controlador_colision port map(
 	--Jugador abajo y obstaculo en medio
     posicion_in <= 0;
 	obs_3_in <= 2;
-    tick_in <= '1';
+    tick_in <= '0';
     wait for 100 ns;
     tick_in <= '1';
     wait for 100 ns;
@@ -142,7 +142,7 @@ t_controlador : controlador_colision port map(
     --Jugador abajo y obstaculo arriba
     posicion_in <= 0;
 	obs_3_in <= 3;
-    tick_in <= '1';
+    tick_in <= '0';
     wait for 100 ns;
     tick_in <= '1';
     wait for 100 ns;
@@ -156,7 +156,7 @@ t_controlador : controlador_colision port map(
 	--Jugador arriba y obstaculo cuadrado abajo
     posicion_in <= 2;
 	obs_3_in <= 4;
-    tick_in <= '1';
+    tick_in <= '0';
     wait for 100 ns;
     tick_in <= '1';
     wait for 100 ns;
@@ -170,7 +170,7 @@ t_controlador : controlador_colision port map(
 	--Jugador abajo y no obstaculo
     posicion_in <= 0;
 	obs_3_in <= 0;
-    tick_in <= '1';
+    tick_in <= '0';
     wait for 100 ns;
     tick_in <= '1';
     wait for 100 ns;
@@ -184,7 +184,7 @@ t_controlador : controlador_colision port map(
 	--Jugador arriba y no obstaculo
     posicion_in <= 0;
 	obs_3_in <= 0;
-    tick_in <= '1';
+    tick_in <= '0';
     wait for 100 ns;
     tick_in <= '1';
     wait for 100 ns;

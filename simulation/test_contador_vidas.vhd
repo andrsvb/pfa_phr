@@ -42,7 +42,7 @@ component contador_vidas is
     colision : in std_logic;
     tick : in std_logic;
 	reset: in std_logic;
-    s_reset : out std_logic;
+    game_over : out std_logic;
     vidas : out integer range 0 to 3
   );
 end component;
@@ -50,7 +50,7 @@ end component;
 signal colision_in : std_logic;
 signal tick_in : std_logic;
 signal reset_in : std_logic;
-signal s_reset_out : std_logic;
+signal game_over_out : std_logic;
 signal vidas_out : integer range 0 to 3;
 
 begin
@@ -59,7 +59,7 @@ t_contador : contador_vidas port map(
     colision => colision_in,
     tick => tick_in,
 	reset => reset_in,
-    s_reset => s_reset_out,
+    game_over => game_over_out,
     vidas => vidas_out
  );
  

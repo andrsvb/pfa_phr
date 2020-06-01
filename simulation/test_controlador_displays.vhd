@@ -40,14 +40,14 @@ architecture Behavioral of test_controlador_displays is
 COMPONENT controlador_displays
     port(
         clk : in std_logic;
-        leds_personaje : out std_logic_vector (7 downto 0);
-        leds_obs2 : out std_logic_vector (7 downto 0);
-        leds_obs1 : out std_logic_vector (7 downto 0);
-        leds_obs0 : out std_logic_vector (7 downto 0);
-        leds_vidas : out std_logic_vector (7 downto 0);
-        leds_p2 : out std_logic_vector (7 downto 0);
-        leds_p1 : out std_logic_vector (7 downto 0);
-        leds_p0 : out std_logic_vector (7 downto 0);
+        leds_personaje : in std_logic_vector (7 downto 0);
+        leds_obs2 : in std_logic_vector (7 downto 0);
+        leds_obs1 : in std_logic_vector (7 downto 0);
+        leds_obs0 : in std_logic_vector (7 downto 0);
+        leds_vidas : in std_logic_vector (7 downto 0);
+        leds_p2 : in std_logic_vector (7 downto 0);
+        leds_p1 : in std_logic_vector (7 downto 0);
+        leds_p0 : in std_logic_vector (7 downto 0);
         displays_anodes : out std_logic_vector (7 downto 0);
         displays_cathodes : out std_logic_vector (7 downto 0)
 	);
