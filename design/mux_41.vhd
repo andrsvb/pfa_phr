@@ -33,9 +33,9 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity mux_41 is
 port(
-      A,B,C,D : in integer range 0 to 2;
-     S0,S1: in std_logic;
-     Z: out integer range 0 to 2
+      a, b, c, d : in integer range 0 to 2;
+     s0, s1 : in std_logic;
+     z : out integer range 0 to 2
 );
 end mux_41;
 
