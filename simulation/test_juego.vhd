@@ -78,6 +78,7 @@ t_juego : juego port map(
 t_process : process
 begin
 
+    -- inicializo las entradas a 0
     clk <= '0';
     reset <= '0';
     boton_speed <= '0';
@@ -85,40 +86,83 @@ begin
     up <= '0';
     down <= '0';
     wait for 100 ns;
-    clk <= '1';
+    -- primer ciclo de tick
+    tick1 : for i in 0 to 5 loop
+        clk <= not clk;
+        wait for 100 ns;
+    end loop;
+    -- pausa
+    boton_pausa <= '1';
     wait for 100 ns;
-    clk <= '0';
+    boton_pausa <= '0';
     wait for 100 ns;
-    clk <= '1';
+    -- un ciclo de tick
+    tick2 : for i in 0 to 7 loop
+        clk <= not clk;
+        wait for 100 ns;
+    end loop;
+    -- salgo de pausa
+    boton_pausa <= '1';
     wait for 100 ns;
-    clk <= '0';
+    boton_pausa <= '0';
     wait for 100 ns;
-    clk <= '1';
+    -- un ciclo de tick
+    tick3 : for i in 0 to 7 loop
+        clk <= not clk;
+        wait for 100 ns;
+    end loop;
+    -- reset
+    reset <= '1';
     wait for 100 ns;
-    clk <= '0';
+    -- un ciclo de tick
+    tick4 : for i in 0 to 7 loop
+        clk <= not clk;
+        wait for 100 ns;
+    end loop;
+    -- salgo de reset
+    reset <= '0';
     wait for 100 ns;
-    clk <= '1';
+    -- un ciclo de tick
+    tick5 : for i in 0 to 7 loop
+        clk <= not clk;
+        wait for 100 ns;
+    end loop;
+    -- cambio a la segunda velocidad
+    boton_speed <= '1';
     wait for 100 ns;
-    clk <= '0';
+    boton_speed <= '0';
     wait for 100 ns;
-    clk <= '1';
+    -- un ciclo de tick
+    tick6 : for i in 0 to 15 loop
+        clk <= not clk;
+        wait for 100 ns;
+    end loop;
+    -- subo el personaje
+    up <= '1';
     wait for 100 ns;
-    clk <= '0';
+    -- un ciclo de tick
+    tick7 : for i in 0 to 15 loop
+        clk <= not clk;
+        wait for 100 ns;
+    end loop;
+    -- bajo el personaje
+    up <= '0';
     wait for 100 ns;
-    clk <= '1';
+    down <= '1';
     wait for 100 ns;
-    clk <= '0';
+    -- un ciclo de tick
+    tick8 : for i in 0 to 15 loop
+        clk <= not clk;
+        wait for 100 ns;
+    end loop;
+    -- dejo el personaje quieto
+    down <= '0';
     wait for 100 ns;
-    clk <= '1';
-    wait for 100 ns;
-    clk <= '0';
-    wait for 100 ns;
-    clk <= '1';
-    wait for 100 ns;
-    clk <= '0';
-    wait for 100 ns;
-    clk <= '1';
-    wait for 100 ns;
+    -- sigue el reloj para probar el game over
+    final : loop
+        clk <= not clk;
+        wait for 100 ns;
+    end loop;
 	
 end process;
 

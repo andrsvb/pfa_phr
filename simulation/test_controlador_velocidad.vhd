@@ -63,70 +63,94 @@ t_controlador : controlador_velocidad port map(
 
      begin
      
--- testeo para la velocidad 1 del juego
-	speed_in <='0';
+    -- velocidad 1
+    speed_in <= '0';
  	
- 	--primer ciclo de reloj, salida esperada: 0
+ 	--1 ciclo de reloj, salida esperada: 0
 	clk_in <='0';
     wait for 100 ns;
     clk_in <='1';
 	wait for 100 ns;
- 	--segundo ciclo de reloj, salida esperada: 1
+ 	--2 ciclo de reloj, salida esperada: 0
 	clk_in <='0';
     wait for 100 ns;
     clk_in <='1';
 	wait for 100 ns;
- 	--tercer ciclo de reloj, salida esperada: 0
+ 	--3 ciclo de reloj, salida esperada: 0
 	clk_in <='0';
     wait for 100 ns;
     clk_in <='1';
 	wait for 100 ns;
- 	--cuarto ciclo de reloj, salida esperada: 1
+ 	--4 ciclo de reloj, salida esperada: 1
 	clk_in <='0';
     wait for 100 ns;
     clk_in <='1';
 	wait for 100 ns;
- 	--quinto ciclo de reloj, salida esperada: 0
+ 	--5 ciclo de reloj, salida esperada: 0
 	clk_in <='0';
     wait for 100 ns;
     clk_in <='1';
 	wait for 100 ns;
-
-
--- testeo para la velocidad 2 del juego
-	speed_in <='1';
+ 	--6 ciclo de reloj, salida esperada: 0
+	clk_in <='0';
+    wait for 100 ns;
+    clk_in <='1';
+	wait for 100 ns;
+ 	--7 ciclo de reloj, salida esperada: 0
+	clk_in <='0';
+    wait for 100 ns;
+    clk_in <='1';
+	wait for 100 ns;
+ 	--8 ciclo de reloj, salida esperada: 1
+	clk_in <='0';
+    wait for 100 ns;
+    clk_in <='1';
+	wait for 100 ns;
+ 	--9 ciclo de reloj, salida esperada: 0
+	clk_in <='0';
+    wait for 100 ns;
+    clk_in <='1';
+	wait for 100 ns;
 	
- 	--sexto ciclo de reloj, salida esperada: 0
+	-- velocidad 2
+	speed_in <= '1';
+	
+ 	--10 ciclo de reloj, salida esperada: 0
 	clk_in <='0';
     wait for 100 ns;
     clk_in <='1';
 	wait for 100 ns;
- 	--septimo ciclo de reloj, salida esperada: 0
+ 	--11 ciclo de reloj, salida esperada: 0
 	clk_in <='0';
     wait for 100 ns;
     clk_in <='1';
 	wait for 100 ns;
- 	--octavo ciclo de reloj, salida esperada: 1
+ 	--12 ciclo de reloj, salida esperada: 0
 	clk_in <='0';
     wait for 100 ns;
     clk_in <='1';
 	wait for 100 ns;
- 	--noveno ciclo de reloj, salida esperada: 0
+ 	--13 ciclo de reloj, salida esperada: 0
 	clk_in <='0';
     wait for 100 ns;
     clk_in <='1';
 	wait for 100 ns;
- 	--decimo ciclo de reloj, salida esperada: 0
+ 	--14 ciclo de reloj, salida esperada: 0
 	clk_in <='0';
     wait for 100 ns;
     clk_in <='1';
 	wait for 100 ns;
- 	--onceavo ciclo de reloj, salida esperada: 0
+ 	--15 ciclo de reloj, salida esperada: 0
 	clk_in <='0';
     wait for 100 ns;
     clk_in <='1';
 	wait for 100 ns;
- 	--duodecimo ciclo de reloj, salida esperada: 1
+ 	--16 ciclo de reloj, salida esperada: 1
+	clk_in <='0';
+    wait for 100 ns;
+    clk_in <='1';
+	wait for 100 ns;
+ 	--17 ciclo de reloj, salida esperada: 0
 	clk_in <='0';
     wait for 100 ns;
     clk_in <='1';

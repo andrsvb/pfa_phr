@@ -57,27 +57,47 @@ t_contador : contador_v1 port map(
 t_process : process
 begin
  	
- 	--primer ciclo de reloj, salida esperada: 0
+ 	--1 ciclo de reloj, salida esperada: 0
 	clk_in <='0';
     wait for 100 ns;
     clk_in <='1';
 	wait for 100 ns;
- 	--segundo ciclo de reloj, salida esperada: 1
+ 	--2 ciclo de reloj, salida esperada: 0
 	clk_in <='0';
     wait for 100 ns;
     clk_in <='1';
 	wait for 100 ns;
- 	--tercer ciclo de reloj, salida esperada: 0
+ 	--3 ciclo de reloj, salida esperada: 0
 	clk_in <='0';
     wait for 100 ns;
     clk_in <='1';
 	wait for 100 ns;
- 	--cuarto ciclo de reloj, salida esperada: 1
+ 	--4 ciclo de reloj, salida esperada: 1
 	clk_in <='0';
     wait for 100 ns;
     clk_in <='1';
 	wait for 100 ns;
- 	--quinto ciclo de reloj, salida esperada: 0
+ 	--5 ciclo de reloj, salida esperada: 0
+	clk_in <='0';
+    wait for 100 ns;
+    clk_in <='1';
+	wait for 100 ns;
+ 	--6 ciclo de reloj, salida esperada: 0
+	clk_in <='0';
+    wait for 100 ns;
+    clk_in <='1';
+	wait for 100 ns;
+ 	--7 ciclo de reloj, salida esperada: 0
+	clk_in <='0';
+    wait for 100 ns;
+    clk_in <='1';
+	wait for 100 ns;
+ 	--8 ciclo de reloj, salida esperada: 1
+	clk_in <='0';
+    wait for 100 ns;
+    clk_in <='1';
+	wait for 100 ns;
+ 	--9 ciclo de reloj, salida esperada: 0
 	clk_in <='0';
     wait for 100 ns;
     clk_in <='1';
