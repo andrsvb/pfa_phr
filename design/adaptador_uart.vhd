@@ -75,11 +75,9 @@ uart : ENTITY work.uart
 		tx		=> tx
     );
     
-uart_proc : process (clk, tx_busy)
+uart_proc : process (puntuacion)
 begin
-    if(clk'event and clk = '1') then
         if(tx_busy = '0') then
-            enable <= '1';
             if(contador = '0') then
                 tx_data (7 downto 2) <= "000000";
                 tx_data (1 downto 0) <= puntuacion (9 downto 8);
@@ -87,11 +85,11 @@ begin
                 tx_data (7 downto 0) <= puntuacion (7 downto 0);
             end if;
             contador <= NOT contador;
+            enable <= '1';
         end if;
         if(enable = '1') then
             enable <= '0';
         end if;
-    end if;
 end process;
 
 end Behavioral;

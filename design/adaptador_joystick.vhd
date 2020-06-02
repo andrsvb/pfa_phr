@@ -74,7 +74,7 @@ begin
 
 xadc : xadc_wiz_0 
     port map(
-    daddr_in        => "0010011",       --pin a13 -> direccion 13h ?
+    daddr_in        => "0010011",
     den_in          => enableint,
     di_in           => (others => '0'),
     dwe_in          => '0',

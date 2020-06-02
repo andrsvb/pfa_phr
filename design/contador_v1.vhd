@@ -40,21 +40,21 @@ end contador_v1;
 
 architecture Behavioral of contador_v1 is
 
-signal conta : std_logic := '0';
+signal conta : integer range 0 to 3 := 0;
 
 begin
 
 process ( clk )
 	begin
 	if  clk = '1' and clk'event then
-         if conta = '1' then
-            conta <= '0';
-         else
-            conta <= '1';
+         if conta = 3 then
+            conta <= 0;
+         else 
+            conta <= conta + 1;
          end if;
 	end if;
 end process;
 
-tick <= '1' when conta = '1' else '0';
+tick <= '1' when conta = 3 else '0';
 
 end Behavioral;
