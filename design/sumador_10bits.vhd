@@ -40,6 +40,9 @@ entity sumador_10bits is
     );
 end sumador_10bits;
 
+-- Este bloque funcional suma tres numeros de 10 bits sin acarreo de entrada ni salida
+--      Cada entrada es una cifra en binario de un numero de 3 cifras en decimal, por lo que el máximo es 999
+
 architecture Behavioral of sumador_10bits is
 
 signal acarreo0 : std_logic_vector (8 downto 0);
@@ -48,7 +51,21 @@ signal salida0 : std_logic_vector (9 downto 0);
 
 begin
 
+
+-- 1. Sumo los dos primeros numeros, entrada0 y entrada1, y guardo el resultado en suma0
+--      Para el primer bit no recibo acarreo por lo que uso un semisumador
+--          entradas: entrada0(0) y entrada1(0)
+--          salidas: suma0(0) = entrada0(0) XOR entrada1(0)
+--                   acarreo0(0) = entrada0(0) AND entrada1(0)
+--      Para los otros 9 bits uso un sumador total, para i = 1, 2, ... , 10
+--          entradas: entrada0(i), entrada1(i) y acarreo0(i-1)
+--          salidas: suma0(i) = entrada0(i) XOR entrada1(i) XOR acarreo0(i-1)
+--                   acarreo0(i) = ( entrada0(i) AND entrada1(i) ) OR ( acarreo0(i-1) AND ( entrada0(i) XOR entrada1(i) )
+--                      menos para el ultimo bit ( acarreo0(10) ), ya que no hay acarreo de salida global, no hace falta calcularlo
+--                          además la suma nunca debe ser mayor de 999
+
 acarreo0(0) <= entrada0(0) AND entrada1(0);
+
 acarreo0(1) <= (entrada0(1) AND entrada1(1)) OR (acarreo0(0) AND (entrada0(1) XOR entrada1(1)));
 acarreo0(2) <= (entrada0(2) AND entrada1(2)) OR (acarreo0(1) AND (entrada0(2) XOR entrada1(2)));
 acarreo0(3) <= (entrada0(3) AND entrada1(3)) OR (acarreo0(2) AND (entrada0(3) XOR entrada1(3)));
@@ -70,7 +87,14 @@ salida0(7) <= entrada0(7) XOR entrada1(7) XOR acarreo0(6);
 salida0(8) <= entrada0(8) XOR entrada1(8) XOR acarreo0(7);
 salida0(9) <= entrada0(9) XOR entrada1(9) XOR acarreo0(8);
 
+-- 2. Sumo el ultimo numero y la suma de los anteriores de la misma forma que antes pero cambiando:
+--      entrada0 -> salida0
+--      entrada1 -> entrada2
+--      acarreo0 -> acarreo1
+--      salida0 -> salida
+
 acarreo1(0) <= salida0(0) AND entrada2(0);
+
 acarreo1(1) <= (salida0(1) AND entrada2(1)) OR (acarreo1(0) AND (salida0(1) XOR entrada2(1)));
 acarreo1(2) <= (salida0(2) AND entrada2(2)) OR (acarreo1(1) AND (salida0(2) XOR entrada2(2)));
 acarreo1(3) <= (salida0(3) AND entrada2(3)) OR (acarreo1(2) AND (salida0(3) XOR entrada2(3)));

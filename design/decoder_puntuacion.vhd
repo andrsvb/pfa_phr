@@ -37,20 +37,21 @@ entity decoder_puntuacion is
   leds : out std_logic_vector (7 downto 0)
   );
 end decoder_puntuacion;
+-- Recibe una de las cifras de puntuacion y devuelve el array para encender el led con la forma de la cifra
 
 architecture Behavioral of decoder_puntuacion is
 
 begin
 
-leds <= "00000011" when puntuacion=0 OR puntuacion=10 else
-        "10011101" when puntuacion=1 else
-        "00100101" when puntuacion=2 else
-        "00001101" when puntuacion=3 else
-        "10011001" when puntuacion=4 else
-        "01001001" when puntuacion=5 else
-        "01000001" when puntuacion=6 else
-        "00011111" when puntuacion=7 else
-        "00000001" when puntuacion=8 else
-        "00011001" when puntuacion=9;
+leds <= "00000011" when puntuacion=0 OR puntuacion=10 else  -- 0
+        "10011101" when puntuacion=1 else                   -- 1
+        "00100101" when puntuacion=2 else                   -- 2
+        "00001101" when puntuacion=3 else                   -- 3
+        "10011001" when puntuacion=4 else                   -- 4
+        "01001001" when puntuacion=5 else                   -- 5
+        "01000001" when puntuacion=6 else                   -- 6
+        "00011111" when puntuacion=7 else                   -- 7
+        "00000001" when puntuacion=8 else                   -- 8
+        "00011001" when puntuacion=9;                       -- 9
 
 end Behavioral;
