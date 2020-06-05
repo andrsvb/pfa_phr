@@ -31,6 +31,10 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
+--Esta entidad cambia la velocidad el juego, habiendo 2 velocidades, 
+--una más rápida que la otra para aumentar la dificultad del juego.
+--Cuando se pulsa el botón de velocidad, se niega el estado de velocidad para cambiarlo.
+
 entity estado_velocidad is
   port(
     boton_speed : in std_logic;
