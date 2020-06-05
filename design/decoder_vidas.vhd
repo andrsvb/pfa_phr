@@ -31,6 +31,10 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
+--Esta entidad se encarga de hacer visuales
+--las vidas que quedan a través de
+--los leds de 7 segmentos 
+
 entity decoder_vidas is
  Port ( 
   vidas : in integer range 0 to 3;
@@ -42,7 +46,13 @@ architecture Behavioral of decoder_vidas is
 
 begin
 
-leds <= "00000011" when vidas=0  else
+--Los números binarios indican qué leds se iluminarán '1' y cuales no '0' para 
+--mostrar gráficamente cuántas vidas quedan de tal manera que 
+--se iluminarán 3 rayitas horizontales (3 vidas)
+--dos rayitas horizontales (2 vidas), 1 rayita horizontal (1 vida)
+--o el número 0, (0 vidas)
+ 
+leds <= "00000011" when vidas=0  else 
         "11101111" when vidas=1 else
         "11101101" when vidas=2 else
         "01101101" when vidas=3 ;
