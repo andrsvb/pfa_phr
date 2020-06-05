@@ -38,9 +38,11 @@ entity controlador_pausa is
     clk_out : out std_logic
   );
 end controlador_pausa;
+-- Contiene la maquina de estados de pausa y controla el estado de pausa
 
 architecture Behavioral of controlador_pausa is
 
+-- maquina de estados de pausa
 component estado_pausa is
   port(
     boton_pausa : in std_logic;
@@ -48,16 +50,17 @@ component estado_pausa is
   );
 end component;
 
-signal s_pausa : std_logic;
+signal s_pausa : std_logic;     -- señal interna de pausa
 
 begin
 
+-- maquina de estados de pausa
 e_pausa : estado_pausa
   port map(
     boton_pausa => boton_pausa,
     pausa => s_pausa
   );
-  
-clk_out <= clk_in AND s_pausa;
+
+clk_out <= clk_in AND s_pausa;  -- en pausa (0) bloquea el reloj a 0
 
 end Behavioral;
