@@ -33,7 +33,10 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 --Esta entidad se encarga de cambiar el número de vidas
 --teniendo en cuenta las posibles colisiones del jugador 
---con los obstaculos y 
+--con los obstaculos, la muerte del jugador (game over)
+--y la activación del botón reset. Si ocurre una de estas
+--últimas dos situaciones se resetea el número de vidas. 
+
 entity contador_vidas is
   port(
     colision : in std_logic;
