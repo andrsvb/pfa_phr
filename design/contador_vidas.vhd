@@ -31,6 +31,9 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
+--Esta entidad se encarga de cambiar el número de vidas
+--teniendo en cuenta las posibles colisiones del jugador 
+--con los obstaculos y 
 entity contador_vidas is
   port(
     colision : in std_logic;
@@ -50,14 +53,13 @@ begin
 game_over <= '1' when s_vidas = 0 else '0';
 vidas <= s_vidas;
 
-process (tick, colision, reset)
+process (tick, reset)
      begin
        if reset = '1' then
                 s_vidas <= 3;
        elsif tick = '1' and tick'event then
          if colision = '1' then
-            if s_vidas = 0 then
-            else
+            if s_vidas > 0 then
                 s_vidas <= s_vidas - 1;
 			end if;
          end if;
