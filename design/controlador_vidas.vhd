@@ -31,6 +31,12 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
+--Esta entidad controla tanto el número de vidas como que estas vidas se muestren
+--de manera adecuada gráficamente a través de los leds de 7 segmentos. 
+--Es decir, reúne el funcionamiento de contador_vidas y decoder_vidas. 
+--Por tanto, devuelve la variable game_over a '1' si el número de vidas llega a 0 y también
+--devuelve el estado que deben tener los leds de las vidas. 
+
 entity controlador_vidas is
  port ( 
   colision : in std_logic;
