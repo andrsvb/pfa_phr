@@ -31,6 +31,11 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
+--Esta entidad controla en qué situaciones el jugador es golpeado por
+--un obstáculo, dependiendo de dónde se encuentre el mismo (posicion) 
+--y el tipo de obstáculo al que se esté enfrentando.
+--Si el jugador es golpeado, se devuelve colision a '1'. 
+
 entity controlador_colision is
  port ( 
   posicion : in integer range 0 to 2;
