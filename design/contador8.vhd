@@ -37,6 +37,7 @@ entity contador8 is
       selector : out integer range 0 to 7
 	);
 end contador8;
+-- Cuenta, de 0 a 7 a 0 de nuevo, los flancos de subida del reloj ( clk )
 
 architecture Behavioral of contador8 is
 
@@ -47,10 +48,10 @@ begin
 process (clk)
      begin
        if clk = '1' and clk'event then
-         if conta = 7 then
+         if conta = 7 then                      -- vuelve a 0
             conta <= 0;
          else
-            conta <= conta + 1;
+            conta <= conta + 1;                 -- cuenta normal
          end if;
        end if;
 end process;

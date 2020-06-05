@@ -46,9 +46,13 @@ entity controlador_displays is
         displays_cathodes : out std_logic_vector (7 downto 0)
 	);
 end controlador_displays;
+-- Enciende en cada ciclo de la señal de reloj ( clk ) un solo display con display_anodes,
+--      de la forma recibida en cada array de leds con display_cathdes, según cuantos ciclos de reloj hay contados.
+--      Con 0 enciende el led del personaje, con de 1 a 3 los leds de obstaculos, con 4 el de vidas y con de 5 a 7 los de puntuacion
 
 architecture Behavioral of controlador_displays is
 
+-- contador de 0 a 7
 COMPONENT contador8
     port(
       clk : in std_logic;
@@ -56,6 +60,7 @@ COMPONENT contador8
 	);
 END COMPONENT;
 
+-- decodificar para encender un solo display
 COMPONENT decoder_anodes
     port(
       selector : in integer range 0 to 7;
@@ -63,6 +68,7 @@ COMPONENT decoder_anodes
 	);
 END COMPONENT;
 
+-- multiplexor para coger un array de leds
 COMPONENT mux_8_1
     port(
         leds_personaje : in std_logic_vector (7 downto 0);
@@ -78,22 +84,25 @@ COMPONENT mux_8_1
 	);
 END COMPONENT;
 
-signal selector : integer range 0 to 7;
+signal selector : integer range 0 to 7;         -- señal interna para indicar que display enciende y cómo
 
 begin
 
+-- de donde saca el valor de selector
 conta : contador8
     port map(
       clk => clk,
       selector => selector
 	);
 
+-- para encender un solo display
 decoder : decoder_anodes
     port map(
       selector => selector,
       displays_anodes => displays_anodes
 	);
 
+-- para encender el display de la forma indicada
 mux : mux_8_1
     port map(
         leds_personaje => leds_personaje,

@@ -37,6 +37,7 @@ entity decoder_anodes is
       displays_anodes : out std_logic_vector (7 downto 0)
 	);
 end decoder_anodes;
+-- Según el valor de selector enciende un solo display de los 8 que hay
 
 architecture Behavioral of decoder_anodes is
 

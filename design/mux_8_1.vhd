@@ -45,6 +45,7 @@ entity mux_8_1 is
         displays_cathodes : out std_logic_vector (7 downto 0)
 	);
 end mux_8_1;
+-- Multiplexor de 8 entradas y una salida, saca por display_cathodes el array de leds correspondinte segun selector
 
 architecture Behavioral of mux_8_1 is
 
