@@ -38,6 +38,7 @@ entity registro_o is
   tick : in std_logic
   );
 end registro_o;
+-- Es un registro que se actualiza cada flanco de suida de tick
 
 architecture Behavioral of registro_o is
 

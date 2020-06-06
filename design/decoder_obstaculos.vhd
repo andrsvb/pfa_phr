@@ -37,16 +37,17 @@ entity decoder_obstaculos is
   leds : out std_logic_vector (7 downto 0)
   );
 end decoder_obstaculos;
+-- Este bloque devuelve el vector necesario para reflejar en un display el obstaculo recibido
 
 architecture Behavioral of decoder_obstaculos is
 
 begin
 
-leds <= "11111111" when obs=0 else
-        "11101111" when obs=1 else
-        "11111101" when obs=2 else
-        "01111111" when obs=3 else
-        "11000101" when obs=4 else
-        "00111001" when obs=5;
+leds <= "11111111" when obs=0 else          -- obstaculo vacio
+        "11101111" when obs=1 else          -- obstaculo abajo
+        "11111101" when obs=2 else          -- obstaculo en medio
+        "01111111" when obs=3 else          -- obstaculo arriba
+        "11000101" when obs=4 else          -- obstaculo abajo grande
+        "00111001" when obs=5;              -- obstaculo arriba grande
 
 end Behavioral;

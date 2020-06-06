@@ -38,24 +38,23 @@ entity generador_obstaculos is
     obs: out  integer range 0 to 5
 
   );
-
-
 end generador_obstaculos;
+-- Este bloque se encarga de crear los obstaculos
 
- --sacar por una variable numero de 0 a 4 recibe tick 
 architecture Behavioral of generador_obstaculos is
 
-signal conta : integer  range 0 to 5 := 0;
+signal conta : integer  range 0 to 5 := 0;      -- ultimo obstaculo generado, valor por default : 0
+
 begin
 
 process (tick, s_reset)
      begin
-       if s_reset = '1' then
+       if s_reset = '1' then                    -- si recibe reset se vuelve al valor por default
             conta <= 0; 
-       elsif tick = '1' and tick'event then
-         if conta = 5 then
+       elsif tick = '1' and tick'event then     -- en cada flanco de subida de tick genera un nuevo obstaculo
+         if conta = 5 then                      --      pasa de 5 a 1, solo genera el obstaculo vacio si recibe reset
             conta <= 1;
-         else
+         else                                   --      cuenta normal 1 .. 5
             conta <= conta + 1;
          end if;
        end if;

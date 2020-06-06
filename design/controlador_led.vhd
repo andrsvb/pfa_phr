@@ -33,16 +33,18 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity controlador_led is
  Port ( 
-  obs_prev : in integer range 0 to 5;
-  obs_sig : out integer range 0 to 5;
-  led : out std_logic_vector (7 downto 0);
-  tick_c : in std_logic
+  obs_prev : in integer range 0 to 5;           -- obstaculo en su posicion, recibido de la posicion anterior
+  obs_sig : out integer range 0 to 5;           -- obstaculo en la siguiente posicion
+  led : out std_logic_vector (7 downto 0);      -- vector usado para encender un display
+  tick_c : in std_logic                         -- señal de reloj
 
   );
 end controlador_led;
+-- Este bloque controla una posicion de las 3 de obstaculos.
 
 architecture Behavioral of controlador_led is
 
+-- para obtener el vector que representa el obstaculo
 COMPONENT decoder_obstaculos
  Port ( 
   obs : in integer;
@@ -50,6 +52,7 @@ COMPONENT decoder_obstaculos
   );
 END COMPONENT;
 
+-- para manejar el desplazamiento de obstaculos
 COMPONENT registro_o
     Port ( 
       valor_in : in integer range 0 to 5;
@@ -62,11 +65,14 @@ END COMPONENT;
 
 begin
 
+-- traduce su obstaculo
 decoder_0: decoder_obstaculos port map(
     obs => obs_prev,
     leds => led
     
 );
+
+-- desplaza el obstaculo actual a la siguiente posicion
 registro_0: registro_o port map(
     tick => tick_c,
     valor_in => obs_prev,
