@@ -39,6 +39,7 @@ entity mux2_1 is
 	salida : OUT std_logic
 	);
 end mux2_1;
+-- multiplexor 2 a 1 con speed de selector
 
 architecture Behavioral of Mux2_1 is
 

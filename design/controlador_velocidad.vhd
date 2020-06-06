@@ -38,10 +38,12 @@ port (
 	tick : out std_logic
 	);
 end controlador_velocidad;
-
+-- Controla el reloj de juego tick: teniendo dos divisores de frecuencia y
+--      según el valor de speed, escoge uno para tick
 
 architecture Behavioral of controlador_velocidad is
 
+-- divisor de frecuencia para reloj 'lento'
 COMPONENT contador_v1
 	port(
 	clk  : in std_logic;
@@ -49,6 +51,7 @@ COMPONENT contador_v1
 	);
 END COMPONENT;
 
+-- divisor de frecuencia para reloj 'rapido'
 COMPONENT contador_v2
 	port(
 	clk : in std_logic;
@@ -56,6 +59,7 @@ COMPONENT contador_v2
 	);
 END COMPONENT;
 
+-- multiplexor 2 a 1 con speed de selector
 COMPONENT mux2_1
 	port(
 	a : in std_logic;
@@ -65,21 +69,27 @@ COMPONENT mux2_1
 	);
 END COMPONENT;
 
+-- para conectar los divisores de frecuencia al multiplexor
 signal tick1 : std_logic;
 signal tick2 : std_logic;
 
 begin
 
+-- divisor de frecuencia para reloj 'lento'
 contador_0 : contador_v1 port map(
 clk => clk,
 tick => tick1
 );
 
+-- divisor de frecuencia para reloj 'rapido'
 contador_1 : contador_v2 port map(
 clk => clk,
 tick => tick2
 );
 
+-- segun speed lleva a tick:
+--      con 0 el reloj lento
+--      con 1 el reloj rapido
 mux : mux2_1 port map(
 a => tick1,
 b => tick2,

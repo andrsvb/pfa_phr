@@ -37,10 +37,13 @@ entity contador_v1 is
     tick : out std_logic
   );
 end contador_v1;
+-- Es el divisor de frecuencia con el que sacamos la señal de reloj lenta del juego
+--      En las pruebas es mas rapido que v2 para no complicar la simulacion
 
 architecture Behavioral of contador_v1 is
 
-signal conta : integer range 0 to 3 := 0;
+signal conta : integer range 0 to 3 := 0;   -- divide la frecuencia entre 4
+        -- para conseguir el periodo deseado (1 seg) el rango debe ser de 0 a 100 000 000
 
 begin
 
