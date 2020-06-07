@@ -31,6 +31,9 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
+--Un registro especializado en guardar la posición del personaje del jugador abstraida a un entero, 
+--guarda un entero actualizando el entero guardado con cada tick de reloj si se le introducen nuevos.
+
 entity registro_p is
  Port ( 
       new_pos : in integer range 0 to 2;
