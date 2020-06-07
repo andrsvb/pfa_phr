@@ -31,6 +31,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
+--Traduce las posiciones abstraidas a enteros al array de bits que permite su representación en el display de 7 segmentos.
+
 entity decoder_posicion is
  Port ( 
   posicion_d : in integer range 0 to 2;
