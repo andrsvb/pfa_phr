@@ -31,6 +31,9 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
+--Disminuye en uno el entero recibido dentro del rango aceptado dando la vuelta si llega el menos elevado, 
+--este componente se usa para actualizar la posición del personaje del jugador abastraida a un entero.
+
 entity down_pos is
  Port ( 
   posicion_d : in integer range 0 to 2;
