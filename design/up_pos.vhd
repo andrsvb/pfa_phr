@@ -31,6 +31,9 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
+--Aumenta en uno el entero recibido dentro del rango aceptado dando la vuelta si llega el más elevado, 
+--este componente se usa para actualizar la posición del personaje del jugador abastraida a un entero.
+
 entity up_pos is
  Port ( 
   posicion_u : in integer range 0 to 2;
