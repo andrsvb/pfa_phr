@@ -31,6 +31,10 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
+--Este componente controla todo lo que tiene que ver con la actualización de la posición del personaje del jugador, recibe la posición
+--actual, las señales del joystick y la señal de reloj y actualiza (dependiendo de las entradas up y down) y traduce la posición 
+--recibida como entero a una secuencia de bits representable por el display de 7 segmentos.
+
 entity controlador_posicion is
  port ( 
   tick : in std_logic;
